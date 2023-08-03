@@ -15,7 +15,7 @@ const Dashboard = () => {
       {!isAdding && !isEditing && (
         <>
           <Header setIsAdding={setIsAdding} />
-          <List />
+          <List employees={employees} />
         </>
       )}
       {isAdding && <Add />}
