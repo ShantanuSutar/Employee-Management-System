@@ -24,6 +24,19 @@ const Add = ({ employees, setEmployees, setIsAdding }) => {
         showConfirmButton: true,
       });
     }
+
+    const newEmployee = {
+      id: employees.length + 1,
+      firstName,
+      lastName,
+      email,
+      salary,
+      date,
+    };
+
+    employees.push(newEmployee);
+    setEmployees(employees);
+    setIsAdding(false);
   }
 
   return (
