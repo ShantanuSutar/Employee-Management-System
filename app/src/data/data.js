@@ -80,3 +80,5 @@ const employeeData = [
     date: "2023-07-10",
   },
 ];
+
+export default employeeData;
