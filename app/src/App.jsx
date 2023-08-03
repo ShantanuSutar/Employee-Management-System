@@ -1,9 +1,7 @@
+import Dashboard from "./Page/Dashboard";
+
 function App() {
-  return (
-    <>
-      <h1>S</h1>
-    </>
-  );
+  return <Dashboard />;
 }
 
 export default App;
