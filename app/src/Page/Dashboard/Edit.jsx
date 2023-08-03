@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const Edit = ({ employees, setEmployees, setIsEditing, selectedEmployee }) => {
   const [firstName, setFirstName] = useState(selectedEmployee.firstName);
@@ -9,7 +10,45 @@ const Edit = ({ employees, setEmployees, setIsEditing, selectedEmployee }) => {
 
   const id = selectedEmployee.id;
 
-  function handleUpdate() {}
+  function handleUpdate(e) {
+    e.preventDefault();
+
+    if (!firstName || !lastName || !email || !salary || !date) {
+      return Swal.fire({
+        icon: "error",
+        title: "Error!",
+        text: "Please fill all the fields!",
+        showConfirmButton: true,
+      });
+    }
+
+    const updatedEmployee = {
+      id,
+      firstName,
+      lastName,
+      email,
+      salary,
+      date,
+    };
+
+    for (let i = 0; i < employees.length; i++) {
+      if (employees[i].id === id) {
+        employees[i] = updatedEmployee;
+        break;
+      }
+    }
+
+    setEmployees(employees);
+    setIsEditing(false);
+
+    Swal.fire({
+      icon: "success",
+      title: "Success!",
+      text: `${firstName} ${lastName} updated successfully!`,
+      showConfirmButton: false,
+      timer: 2000,
+    });
+  }
 
   return (
     <div className="small-container">
