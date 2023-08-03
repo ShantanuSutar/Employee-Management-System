@@ -2,6 +2,7 @@ import { useState } from "react";
 import employeeData from "../../data/data.js";
 import List from "./List";
 import Header from "./Header";
+import Add from "./Add.jsx";
 
 const Dashboard = () => {
   const [employees, setEmployees] = useState(employeeData);
@@ -13,10 +14,11 @@ const Dashboard = () => {
     <div className="container">
       {!isAdding && !isEditing && (
         <>
-          <Header />
+          <Header setIsAdding={setIsAdding} />
           <List />
         </>
       )}
+      {isAdding && <Add />}
     </div>
   );
 };
