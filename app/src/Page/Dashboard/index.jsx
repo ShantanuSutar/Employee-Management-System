@@ -3,6 +3,7 @@ import employeeData from "../../data/data.js";
 import List from "./List";
 import Header from "./Header";
 import Add from "./Add.jsx";
+import Edit from "./Edit.jsx";
 
 const Dashboard = () => {
   const [employees, setEmployees] = useState(employeeData);
@@ -10,15 +11,24 @@ const Dashboard = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
 
+  function handleEdit() {
+    setIsEditing(true);
+  }
+  function handleDelete() {}
   return (
     <div className="container">
       {!isAdding && !isEditing && (
         <>
           <Header setIsAdding={setIsAdding} />
-          <List employees={employees} />
+          <List
+            employees={employees}
+            handleDelete={handleDelete}
+            handleEdit={handleEdit}
+          />
         </>
       )}
       {isAdding && <Add />}
+      {isEditing && <Edit />}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-const List = ({ employees }) => {
+const List = ({ employees, handleEdit, handleDelete }) => {
   const currencyFormatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
@@ -32,10 +32,17 @@ const List = ({ employees }) => {
                 <td>{currencyFormatter.format(employee.salary)}</td>
                 <td>{employee.date}</td>
                 <td>
-                  <button className="button muted-button">Edit</button>
+                  <button className="button muted-button" onClick={handleEdit}>
+                    Edit
+                  </button>
                 </td>
                 <td>
-                  <button className="button muted-button">Delete</button>
+                  <button
+                    className="button muted-button"
+                    onClick={handleDelete}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))
