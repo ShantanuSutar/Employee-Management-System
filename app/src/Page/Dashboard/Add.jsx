@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import Swal from "sweetalert2";
 
 const Add = ({ employees, setEmployees, setIsAdding }) => {
   const [firstName, setFirstName] = useState("");
@@ -13,9 +14,21 @@ const Add = ({ employees, setEmployees, setIsAdding }) => {
     textInput.current.focus();
   }, []);
 
+  function handleAdd(e) {
+    e.preventDefault();
+    if (!firstName || !lastName || !email || !salary || !date) {
+      return Swal.fire({
+        icon: "error",
+        title: "Error!",
+        text: "Please fill all the fields!",
+        showConfirmButton: true,
+      });
+    }
+  }
+
   return (
     <div className="small-container">
-      <form>
+      <form onSubmit={handleAdd}>
         <h1>Add Employee</h1>
         <label htmlFor="firstName">First Name</label>
         <input
