@@ -39,7 +39,7 @@ const List = ({ employees, handleEdit, handleDelete }) => {
                 <td>
                   <button
                     className="button muted-button"
-                    onClick={handleDelete}
+                    onClick={() => handleDelete(employee.id)}
                   >
                     Delete
                   </button>
