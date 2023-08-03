@@ -32,7 +32,10 @@ const List = ({ employees, handleEdit, handleDelete }) => {
                 <td>{currencyFormatter.format(employee.salary)}</td>
                 <td>{employee.date}</td>
                 <td>
-                  <button className="button muted-button" onClick={handleEdit}>
+                  <button
+                    className="button muted-button"
+                    onClick={() => handleEdit(employee.id)}
+                  >
                     Edit
                   </button>
                 </td>

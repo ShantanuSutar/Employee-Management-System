@@ -12,7 +12,10 @@ const Dashboard = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
 
-  function handleEdit() {
+  function handleEdit(id) {
+    const [employee] = employees.filter((employee) => employee.id === id);
+
+    setSelectedEmployee(employee);
     setIsEditing(true);
   }
   function handleDelete(id) {
@@ -58,7 +61,14 @@ const Dashboard = () => {
           setIsAdding={setIsAdding}
         />
       )}
-      {isEditing && <Edit />}
+      {isEditing && (
+        <Edit
+          employees={employees}
+          setEmployees={setEmployees}
+          setIsEditing={setIsEditing}
+          selectedEmployee={selectedEmployee}
+        />
+      )}
     </div>
   );
 };
