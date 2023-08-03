@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Add = ({ employees, setEmployees, setIsAdding }) => {
   const [firstName, setFirstName] = useState("");
@@ -6,6 +6,12 @@ const Add = ({ employees, setEmployees, setIsAdding }) => {
   const [email, setEmail] = useState("");
   const [salary, setSalary] = useState("");
   const [date, setDate] = useState("");
+
+  const textInput = useRef(null);
+
+  useEffect(() => {
+    textInput.current.focus();
+  }, []);
 
   return (
     <div className="small-container">
@@ -15,6 +21,7 @@ const Add = ({ employees, setEmployees, setIsAdding }) => {
         <input
           id="firstName"
           type="text"
+          ref={textInput}
           name="firstName"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
