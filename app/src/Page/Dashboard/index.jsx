@@ -27,7 +27,13 @@ const Dashboard = () => {
           />
         </>
       )}
-      {isAdding && <Add />}
+      {isAdding && (
+        <Add
+          employees={employees}
+          setEmployees={setEmployees}
+          setIsAdding={setIsAdding}
+        />
+      )}
       {isEditing && <Edit />}
     </div>
   );
